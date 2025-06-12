@@ -1,0 +1,139 @@
+/**
+ * Image Hotspots Plugin CSS
+ * Modern, responsive styling for image hotspot dots and tooltips
+ * 
+ * Copyright 2025 Will Myers
+ */
+
+/* Base dot styling */
+.image-hotspot-dot {
+  --dot-radius: calc(var(--wm-ih-dot-size, 20px) / 2);
+  width: var(--wm-ih-dot-size, 20px);
+  height: var(--wm-ih-dot-size, 20px);
+  background: var(--wm-ih-dot-background-color, var(--siteBackgroundColor, #ffffff));
+  border-width: var(--wm-ih-dot-border-width, 2px);
+  border-style: var(--wm-ih-dot-border-style, solid);
+  border-color: var(--wm-ih-dot-border-color, var(--paragraphMediumColor, #333333));
+  border-radius: var(--wm-ih-dot-border-radius, 50%);
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--wm-ih-dot-font-size, 12px);
+  font-weight: var(--wm-ih-dot-font-weight, 600);
+  font-family: var(--wm-ih-dot-font-family, var(--heading-font-font-family));
+  color: var(--wm-ih-dot-text-color, var(--paragraphMediumColor, #333333));
+  box-shadow: var(--wm-ih-dot-shadow, 0 2px 8px rgba(0, 0, 0, 0.2));
+  transition: var(--wm-ih-dot-transition, all 0.3s ease);
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+
+/* Pulse animation for dots */
+.image-hotspot-dot::before {
+  content: '';
+  position: absolute;
+  top: calc(-1 * var(--wm-ih-dot-border-width, 2px));
+  left: calc(-1 * var(--wm-ih-dot-border-width, 2px));
+  right: calc(-1 * var(--wm-ih-dot-border-width, 2px));
+  bottom: calc(-1 * var(--wm-ih-dot-border-width, 2px));
+  border: var(--wm-ih-pulse-border-width, 2px) solid var(--wm-ih-pulse-color, var(--paragraphMediumColor, #333333));
+  border-radius: var(--wm-ih-dot-border-radius, 50%);
+  opacity: 0;
+  transform: scale(1);
+  animation: var(--wm-ih-pulse-animation, pulse 2s infinite);
+  display: var(--wm-ih-pulse-display, block);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: var(--wm-ih-pulse-start-opacity, 0.7);
+  }
+  100% {
+    transform: scale(var(--wm-ih-pulse-end-scale, 1.6));
+    opacity: var(--wm-ih-pulse-end-opacity, 0);
+  }
+}
+
+/* Tooltip styling */
+.tippy-box[data-theme~='image-hotspot'] {
+  background-color: var(--wm-ih-tooltip-background-color, #ffffff);
+  color: var(--wm-ih-tooltip-text-color, var(--paragraphMediumColor, #333333));
+  border-radius: var(--wm-ih-tooltip-border-radius, 8px);
+  box-shadow: var(--wm-ih-tooltip-shadow, 0 8px 32px rgba(0, 0, 0, 0.15));
+  border-width: var(--wm-ih-tooltip-border-width, 0px);
+  border-style: var(--wm-ih-tooltip-border-style, solid);
+  border-color: var(--wm-ih-tooltip-border-color, var(--paragraphMediumColor, #333333));
+  font-size: var(--wm-ih-tooltip-font-size, 14px);
+  font-family: var(--wm-ih-tooltip-font-family, var(--paragraph-font-font-family));
+  line-height: var(--wm-ih-tooltip-line-height, 1.4);
+  max-width: var(--wm-ih-tooltip-max-width, 300px) !important;
+}
+
+.tippy-box[data-theme~='image-hotspot'] .tippy-arrow {
+  color: var(--wm-ih-tooltip-background-color, #ffffff);
+}
+
+
+/* Tooltip content */
+.image-hotspot-tooltip {
+  padding: var(--wm-ih-tooltip-padding, 6px 8px);
+}
+
+.image-hotspot-tooltip-title {
+  font-weight: var(--wm-ih-tooltip-title-font-weight, 600);
+  font-size: var(--wm-ih-tooltip-title-font-size, 16px);
+  font-family: var(--wm-ih-tooltip-title-font-family, var(--heading-font-font-family));
+  margin-bottom: var(--wm-ih-tooltip-title-margin-bottom, 8px);
+  color: var(--wm-ih-tooltip-title-color, var(--headingMediumColor, #1a1a1a));
+}
+
+.image-hotspot-tooltip-description {
+  font-size: var(--wm-ih-tooltip-description-font-size, 14px);
+  font-family: var(--wm-ih-tooltip-description-font-family, var(--paragraph-font-font-family));
+  color: var(--wm-ih-tooltip-description-color, var(--paragraphMediumColor, #666666));
+  line-height: var(--wm-ih-tooltip-description-line-height, 1.5);
+  margin: 0;
+}
+
+/* Only description (no title) */
+.image-hotspot-tooltip-title:empty + .image-hotspot-tooltip-description {
+  margin-top: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .image-hotspot-dot {
+    --dot-radius: calc(var(--wm-ih-dot-mobile-size, var(--wm-ih-dot-size, 24px)) / 2);
+    width: var(--wm-ih-dot-mobile-size, var(--wm-ih-dot-size, 24px));
+    height: var(--wm-ih-dot-mobile-size, var(--wm-ih-dot-size, 24px));
+    font-size: var(--wm-ih-dot-mobile-font-size, var(--wm-ih-dot-font-size, 13px));
+  }
+  
+  .tippy-box[data-theme~='image-hotspot'] {
+    font-size: var(--wm-ih-tooltip-mobile-font-size, var(--wm-ih-tooltip-font-size, 13px));
+    max-width: var(--wm-ih-tooltip-mobile-max-width, 280px) !important;
+  }
+  
+  .image-hotspot-tooltip {
+    padding: var(--wm-ih-tooltip-mobile-padding, 5px 7px);
+  }
+  
+  .image-hotspot-tooltip-title {
+    font-size: var(--wm-ih-tooltip-title-mobile-font-size, var(--wm-ih-tooltip-title-font-size, 15px));
+    margin-bottom: var(--wm-ih-tooltip-title-mobile-margin-bottom, 6px);
+  }
+  
+  .image-hotspot-tooltip-description {
+    font-size: var(--wm-ih-tooltip-description-mobile-font-size, var(--wm-ih-tooltip-description-font-size, 13px));
+  }
+}
+
+ImageHotspots{
+  display: none;
+}
