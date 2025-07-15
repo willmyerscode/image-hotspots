@@ -134,16 +134,37 @@ class ImageHotspots {
     }
   }
   createTooltipContent(description) {
-    // If description contains HTML tags, use it directly
-    if (description && description.includes('<')) {
-      return `<div class="image-hotspot-tooltip">${description}</div>`;
-    }
-    
-    // Otherwise, wrap plain text in description div
     let content = '<div class="image-hotspot-tooltip">';
     
     if (description) {
-      content += `<div class="image-hotspot-tooltip-description">${description}</div>`;
+      // If description contains HTML tags, parse and determine wrapping
+      if (description.includes('<')) {
+        // Parse HTML fragment using DOMParser
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(description, 'text/html');
+        
+        // Define block-level tags that shouldn't be wrapped in <p>
+        const blockTags = ['img', 'button', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 
+                          'div', 'section', 'article', 'ul', 'ol', 'li', 'table', 
+                          'tr', 'td', 'th', 'form', 'input', 'textarea', 'select', 
+                          'p', 'blockquote', 'pre', 'hr', 'br'];
+        
+        // Check if any block-level tags are present
+        const hasBlockTags = blockTags.some(tag => 
+          doc.querySelector(tag) !== null
+        );
+        
+        if (hasBlockTags) {
+          // Contains block-level tags, use as-is
+          content += description;
+        } else {
+          // Only contains inline/semantic tags, wrap in <p>
+          content += `<p>${description}</p>`;
+        }
+      } else {
+        // Plain text, wrap in <p>
+        content += `<p>${description}</p>`;
+      }
     }
 
     content += "</div>";
