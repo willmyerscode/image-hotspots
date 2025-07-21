@@ -33,7 +33,10 @@ class ImageHotspotsBuilder {
     this.container.innerHTML = `
       <div class="ihb-main">
         <div class="ihb-left-panel">
+
           <div class="ihb-upload-section" id="upload-section">
+             <h3>Upload Image</h3>
+             <p>Upload an image and click to add your interactive hotspots.</p>
              <div class="ihb-upload-area" id="upload-area">
               <div class="ihb-upload-content">
                 <svg class="ihb-upload-icon" viewBox="0 0 24 24">
@@ -61,7 +64,7 @@ class ImageHotspotsBuilder {
         
         <div class="ihb-right-panel">
           <div class="ihb-hotspots-list">
-            <h3>Hotspots (<span id="hotspot-count">0</span>)</h3>
+            <h3>Edit Hotspots (<span id="hotspot-count">0</span>)</h3>
             <div class="ihb-hotspots-container" id="hotspots-list"></div>
           </div>
           
@@ -96,10 +99,10 @@ class ImageHotspotsBuilder {
       </div>
       
       <div class="ihb-output-section">
-        <h3>Generated HTML Code</h3>
+        <h3>Copy your HTML.</h3>
+        <p>Copy this HTML to your page header code injection area. Replace <code>#your-image-block-id</code> with the block id of your image.</p>
         <div class="ihb-code-section">
           <div class="ihb-code-header">
-            <span>Copy this code to your website:</span>
             <button class="ihb-btn ihb-btn-secondary" id="copy-code">Copy Code</button>
           </div>
           <textarea id="generated-code" readonly placeholder="Upload an image and add hotspots to generate code..."></textarea>
