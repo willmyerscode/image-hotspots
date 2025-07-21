@@ -32,10 +32,9 @@
   -ms-user-select: none;
 }
 
-
 /* Pulse animation for dots */
 .image-hotspot-dot::before {
-  content: '';
+  content: "";
   position: absolute;
   top: calc(-1 * var(--wm-ih-dot-border-width, 2px));
   left: calc(-1 * var(--wm-ih-dot-border-width, 2px));
@@ -61,7 +60,7 @@
 }
 
 /* Tooltip styling */
-.tippy-box[data-theme~='image-hotspot'] {
+.tippy-box[data-theme~="image-hotspot"] {
   background-color: var(--wm-ih-tooltip-background-color, #ffffff);
   color: var(--wm-ih-tooltip-text-color, var(--paragraphMediumColor, #333333));
   border-radius: var(--wm-ih-tooltip-border-radius, 8px);
@@ -75,10 +74,9 @@
   max-width: var(--wm-ih-tooltip-max-width, 300px) !important;
 }
 
-.tippy-box[data-theme~='image-hotspot'] .tippy-arrow {
+.tippy-box[data-theme~="image-hotspot"] .tippy-arrow {
   color: var(--wm-ih-tooltip-background-color, #ffffff);
 }
-
 
 /* Tooltip content */
 .image-hotspot-tooltip {
@@ -114,34 +112,35 @@
     height: var(--wm-ih-dot-mobile-size, var(--wm-ih-dot-size, 24px));
     font-size: var(--wm-ih-dot-mobile-font-size, var(--wm-ih-dot-font-size, 13px));
   }
-  
-  .tippy-box[data-theme~='image-hotspot'] {
+
+  .tippy-box[data-theme~="image-hotspot"] {
     font-size: var(--wm-ih-tooltip-mobile-font-size, var(--wm-ih-tooltip-font-size, 13px));
     max-width: var(--wm-ih-tooltip-mobile-max-width, 280px) !important;
   }
-  
+
   .image-hotspot-tooltip {
     padding: var(--wm-ih-tooltip-mobile-padding, 5px 7px);
   }
-  
+
   .image-hotspot-tooltip-title {
     font-size: var(--wm-ih-tooltip-title-mobile-font-size, var(--wm-ih-tooltip-title-font-size, 15px));
     margin-bottom: var(--wm-ih-tooltip-title-mobile-margin-bottom, 6px);
   }
-  
+
   .image-hotspot-tooltip-description {
     font-size: var(--wm-ih-tooltip-description-mobile-font-size, var(--wm-ih-tooltip-description-font-size, 13px));
   }
 }
 
-ImageHotspots, imagehotspots{
+ImageHotspots,
+imagehotspots {
   display: none;
 }
 
 /* ===== IMAGE HOTSPOTS BUILDER STYLES ===== */
 
 .ihb-builder {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   max-width: 1400px;
   margin: 0 auto;
   padding: 20px;
@@ -176,6 +175,19 @@ ImageHotspots, imagehotspots{
 /* Upload Section */
 .ihb-upload-section {
   margin-bottom: 20px;
+}
+
+.ihb-upload-section h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 10px 0;
+}
+
+.ihb-upload-section p {
+  font-size: 14px;
+  color: #b0b0b0;
+  margin: 0 0 10px 0;
 }
 
 .ihb-upload-area {
@@ -294,8 +306,13 @@ ImageHotspots, imagehotspots{
 }
 
 @keyframes pulse-selected {
-  0%, 100% { transform: translate(-50%, -50%) scale(1); }
-  50% { transform: translate(-50%, -50%) scale(1.1); }
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
 }
 
 .ihb-image-controls {
@@ -508,8 +525,6 @@ ImageHotspots, imagehotspots{
   font-style: italic;
 }
 
-
-
 /* Form Actions */
 .ihb-form-actions {
   display: flex;
@@ -583,7 +598,12 @@ ImageHotspots, imagehotspots{
   font-size: 18px;
   font-weight: 600;
   color: #ffffff;
-  margin: 0 0 15px 0;
+  margin: 0 0 10px 0;
+}
+.ihb-output-section p {
+  font-size: 14px;
+  color: #b0b0b0;
+  margin: 0 0 10px 0;
 }
 
 .ihb-code-section {
@@ -611,7 +631,7 @@ ImageHotspots, imagehotspots{
   min-height: 200px;
   padding: 16px;
   border: none;
-  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
   font-size: 13px;
   line-height: 1.4;
   background: #0f0f0f;
@@ -646,24 +666,24 @@ ImageHotspots, imagehotspots{
   .ihb-builder {
     padding: 15px;
   }
-  
+
   .ihb-main {
     gap: 20px;
   }
-  
+
   .ihb-left-panel,
   .ihb-right-panel {
     padding: 15px;
   }
-  
+
   .ihb-upload-area {
     padding: 40px 15px;
   }
-  
+
   .ihb-form-actions {
     flex-direction: column;
   }
-  
+
   .ihb-editor-toolbar {
     flex-wrap: wrap;
   }
