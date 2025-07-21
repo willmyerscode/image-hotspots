@@ -24,9 +24,7 @@ class ImageHotspots {
     // Find all ImageHotspots elements
     const imageHotspotElements = document.querySelectorAll("ImageHotspots");
 
-    imageHotspotElements.forEach(element => {
-      this.createHotspotInstance(element);
-    });
+    imageHotspotElements.forEach(element => this.createHotspotInstance(element));
   }
 
   createHotspotInstance(element) {
@@ -48,6 +46,8 @@ class ImageHotspots {
       targetBlock.querySelector(".fluid-image-container") ||
       targetBlock.querySelector(".sqs-image-content") ||
       targetBlock.querySelector("img").parentElement;
+
+    targetBlock.dataset.wmPlugin = "image-hotspots";
 
     if (!imageContainer) {
       console.warn(`ImageHotspots: Image container not found in ${blockId}`);
@@ -125,6 +125,13 @@ class ImageHotspots {
           maxWidth: 300,
           interactive: true,
           appendTo: appendTarget,
+          onCreate(instance) {
+            // Add data-wm-plugin attribute to the tippy root element
+            const tippyRoot = instance.popper.closest('[data-tippy-root]');
+            if (tippyRoot) {
+              tippyRoot.setAttribute('data-wm-plugin', 'image-hotspots');
+            }
+          },
         });
       } else {
         console.warn(
@@ -133,6 +140,7 @@ class ImageHotspots {
       }
     }
   }
+
   createTooltipContent(description) {
     let content = '<div class="image-hotspot-tooltip">';
     
