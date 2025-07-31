@@ -323,10 +323,10 @@ imagehotspots {
 
 /* Right Panel */
 .ihb-right-panel {
-  min-width: 0;
   background: #1a1a1a;
   border-radius: 8px;
   padding: 20px;
+  min-width: 0px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   height: fit-content;
   border: 1px solid #404040;
@@ -398,11 +398,13 @@ imagehotspots {
 
 .ihb-hotspot-description {
   font-size: 12px;
+  line-height: 1.5;
   color: #b0b0b0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   max-width: 100%;
+}
+.image-hotspot-tooltip,
+.image-hotspot-tooltip-description {
+  color: black;
 }
 
 /* Empty State */
@@ -457,6 +459,7 @@ imagehotspots {
 .ihb-form-group input[type="text"],
 .ihb-form-group input[type="number"] {
   width: 100%;
+  box-sizing: border-box;
   padding: 10px;
   border: 1px solid #555;
   border-radius: 4px;
