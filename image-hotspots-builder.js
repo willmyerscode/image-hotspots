@@ -129,6 +129,9 @@ class ImageHotspotsBuilder {
     document.getElementById('hotspot-title').addEventListener('input', (e) => this.updateHotspotProperty('title', e.target.value));
     document.getElementById('hotspot-description').addEventListener('input', (e) => this.updateHotspotProperty('description', e.target.innerHTML));
     
+    // Handle paste events to strip formatting
+    document.getElementById('hotspot-description').addEventListener('paste', (e) => this.handleDescriptionPaste(e));
+    
     // Control buttons
     document.getElementById('clear-hotspots').addEventListener('click', () => this.clearAllHotspots());
     document.getElementById('change-image').addEventListener('click', () => this.changeImage());
@@ -499,6 +502,20 @@ class ImageHotspotsBuilder {
     }
     
     document.getElementById('hotspot-description').focus();
+  }
+
+  handleDescriptionPaste(e) {
+    e.preventDefault();
+    
+    // Get the plain text from clipboard
+    const clipboardData = e.clipboardData || window.clipboardData;
+    const plainText = clipboardData.getData('text/plain');
+    
+    // Insert the plain text without formatting
+    if (plainText) {
+      // Use document.execCommand to insert plain text
+      document.execCommand('insertText', false, plainText);
+    }
   }
 
   generateCode() {
