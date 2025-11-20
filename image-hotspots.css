@@ -141,6 +141,10 @@
   }
 }
 
+.sqs-grid-12 .image-block-wrapper:has(.image-hotspot-dot):after {
+  content: unset !important;
+}
+
 ImageHotspots, imagehotspots{
   display: none;
 }
